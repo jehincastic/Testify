@@ -5,3 +5,7 @@
 .file:hover {
     cursor: pointer;
 }
+
+.home {
+    background: white;
+}

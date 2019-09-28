@@ -387,9 +387,9 @@ class AddStudent extends Component {
                         onClose={this.handleClose}
                         onExited={this.handleExited}
                         ContentProps={{
-                            "aria-describedby": "message-id"
+                            "aria-describedby": "message-id1"
                         }}
-                        message={<span id="message-id">Use Images Only</span>}
+                        message={<span id="message-id1">Use Images Only</span>}
                         action={[
                             <IconButton
                                 key="close"

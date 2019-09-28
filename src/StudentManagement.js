@@ -83,10 +83,10 @@ class StudentManagement extends Component {
     handleClick = (id, type) => {
         switch (type) {
             case "view":
-                this.props.history.push(`/view-student?id=${id}`);
+                this.props.history.push(`/view-student/${id}`);
                 break;
             case "edit":
-                this.props.history.push(`/edit-student?id=${id}`);
+                this.props.history.push(`/edit-student/${id}`);
                 break;
             case "inactive":
                 this.inActivateUser(id);

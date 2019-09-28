@@ -25,12 +25,6 @@ import School from "@material-ui/icons/School";
 import Notes from "@material-ui/icons/Notes";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
-import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
 
 const drawerWidth = 240;
 
@@ -122,28 +116,6 @@ const Nav = props => {
     const [openSub2, setOpenSub2] = React.useState(false);
     const [openSub3, setOpenSub3] = React.useState(false);
     const [openSub4, setOpenSub4] = React.useState(false);
-    const [stateCourse, setStateCourse] = React.useState({
-        open: false,
-        name: ""
-    });
-
-    const handleChange = e => {
-        setStateCourse({ ...stateCourse, [e.target.name]: e.target.value });
-    };
-
-    const handleClickOpenCourse = () => {
-        setStateCourse({ ...stateCourse, open: true });
-    };
-
-    const handleCloseCourse = () => {
-        setStateCourse({ ...stateCourse, open: false });
-    };
-
-    const handleCourseSubmit = e => {
-        e.preventDefault();
-        console.log(stateCourse);
-        setStateCourse({ name: "", open: false });
-    };
 
     const handleClick1 = () => {
         setOpenSub1(!openSub1);
@@ -277,6 +249,14 @@ const Nav = props => {
                                 </Link>
                                 <Link
                                     className={classes.link}
+                                    to="/add-batch"
+                                >
+                                    <ListItem button className={classes.nested}>
+                                        <ListItemText primary="Add Batch" />
+                                    </ListItem>
+                                </Link>
+                                <Link
+                                    className={classes.link}
                                     to="/add-bulk-students"
                                 >
                                     <ListItem button className={classes.nested}>
@@ -304,8 +284,7 @@ const Nav = props => {
                             <List component="div" disablePadding>
                                 <Link
                                     className={classes.link}
-                                    to="#"
-                                    onClick={handleClickOpenCourse}
+                                    to="/add-course"
                                 >
                                     <ListItem button className={classes.nested}>
                                         <ListItemText primary="Add Course" />
@@ -399,44 +378,6 @@ const Nav = props => {
                 <div className={classes.drawerHeader} />
                 {props.display}
             </main>
-            <Dialog
-                disableBackdropClick
-                disableEscapeKeyDown
-                open={stateCourse.open}
-                onClose={handleCloseCourse}
-            >
-                <DialogTitle>Add New Course</DialogTitle>
-                <DialogContent>
-                    <form
-                        onSubmit={handleCourseSubmit}
-                        className={classes.container}
-                    >
-                        <TextField
-                            id="outlined-name"
-                            label="Course Name"
-                            name="name"
-                            className={classes.textField}
-                            value={stateCourse.name}
-                            onChange={handleChange}
-                            margin="normal"
-                            variant="outlined"
-                            required
-                        />
-                    </form>
-                </DialogContent>
-                <DialogActions>
-                    <Button
-                        color="primary"
-                        type="submit"
-                        onClick={handleCourseSubmit}
-                    >
-                        Add Course
-                    </Button>
-                    <Button onClick={handleCloseCourse} color="primary">
-                        Cancel
-                    </Button>
-                </DialogActions>
-            </Dialog>
         </div>
     );
 };
